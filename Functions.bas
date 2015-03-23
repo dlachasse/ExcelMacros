@@ -1,4 +1,3 @@
-Attribute VB_Name = "Module2"
 '''''''''''''''''''''''''''''''''''
 '''''''''''' FUNCTIONS ''''''''''''
 '''''''''''''''''''''''''''''''''''
@@ -145,4 +144,25 @@ Public Function UPC(str As String) As Long
     str = Right(String(12, "0") & strOrdNo, 12)
 
 End Function
+
+Function StripHTML(cell As Range) As String
+ Dim RegEx As Object
+ Set RegEx = CreateObject("vbscript.regexp")
+
+ Dim sInput As String
+ Dim sOut As String
+ sInput = cell.Text
+
+ With RegEx
+   .Global = True
+   .IgnoreCase = True
+   .MultiLine = True
+.Pattern = "<[^>]+>" 'Regular Expression for HTML Tags.
+ End With
+
+ sOut = RegEx.Replace(sInput, "")
+ StripHTML = sOut
+ Set RegEx = Nothing
+End Function
+
 
