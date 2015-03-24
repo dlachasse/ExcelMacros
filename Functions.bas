@@ -139,9 +139,9 @@ Public Function ArrayAdd(txt As String) As Long
 
 End Function
 
-Public Function UPC(str As String) As Long
+Public Function UPC(str As Double) As String
 
-    str = Right(String(12, "0") & strOrdNo, 12)
+    UPC = Format(str, "000000000000")
 
 End Function
 
